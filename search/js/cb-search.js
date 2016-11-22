@@ -66,7 +66,7 @@
                 for (var index in data.data) {
                     var item = data.data[index];
                     names.push(item.title);
-                    urls.push(item.url);
+                    urls.push(item.permalink);
                 }
 
                 $("#cb-search-content").typeahead({
