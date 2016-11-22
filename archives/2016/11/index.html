@@ -43,7 +43,7 @@
     <title>归档：2016/11 - tofu&#39;s blog</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/style.css">
@@ -55,9 +55,12 @@
     -->
     
     <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- Rss -->
+    <link rel="alternate" type="application/rss+xml" href="//feed.xml" title="Tofu">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -127,7 +130,7 @@
 
 <!-- Page Header -->
 <!-- Set your background image for this header in the theme's configuration: index_cover -->
-<header class="intro-header" style="background-image: url('http://www.codeblocq.com/assets/projects/hexo-theme-clean-blog/img/home-bg.jpg')">
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -180,7 +183,16 @@
                     
 
                     
-
+                    
+                        <li>
+                            <a href="feed.xml" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
                     
                         <li>
                             <a href="https://github.com/devtofu" target="_blank">
@@ -213,18 +225,20 @@
             </div>
         </div>
     </div>
-    <div class="cb-search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
-      opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
-        <input type="text" class="form-control cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="文章标题 日期 标签" >
+    <!--
+        <div class="cb-search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
+          opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+            <input type="text" class="form-control cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="文章标题 日期 标签" >
 
-        <div style="position: fixed; top: 16px; right: 16px;">
-            <img src="/search/img/cb-close.png"  id="cb-close-btn"/>
+            <div style="position: fixed; top: 16px; right: 16px;">
+                <img src="/search/img/cb-close.png"  id="cb-close-btn"/>
+            </div>
         </div>
-    </div>
 
-    <div style="position: fixed; right: 16px; bottom: 20px;">
-        <img src="/search/img/cb-search.png"  id="cb-search-btn"  title="双击ctrl试一下"/>
-    </div>
+        <div style="position: fixed; right: 16px; bottom: 20px;">
+            <img src="/search/img/cb-search.png"  id="cb-search-btn"  title="双击ctrl试一下"/>
+        </div>
+    -->
 </footer>
 
     <!-- After footer scripts -->
