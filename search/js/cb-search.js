@@ -29,7 +29,7 @@
 
  		$("#cb-search-content").keyup(function (e) {
             var time2 = new Date().getTime();
-            if (window.event.keyCode == 17) {
+            if (e.keyCode == 17) {
                 var gap = time2 - time1;
                 time1 = time2;
                 if (gap < 500) {
@@ -66,7 +66,7 @@
                 for (var index in data.data) {
                     var item = data.data[index];
                     names.push(item.title);
-                    urls.push(item.permalink);
+                    urls.push(item.url);
                 }
 
                 $("#cb-search-content").typeahead({
@@ -80,6 +80,6 @@
                     }
                 });
             }
-        });
+        }).error(function(data, b) { console.log("json解析错误，搜索功能暂不可用，请检查文章title，确保不含有换行等特殊符号"); });
 
     });
