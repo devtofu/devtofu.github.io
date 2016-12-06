@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--Description-->
+    
+        <meta name="description" content="简单说两句经过几年的发展，Jenkins 自动化构建系统被越来越多的团队推崇使用，在日常开发中可以节约出相当一部份精力，如何安装 Jenkins 这里就不过多的介绍了，可以参考其他的教程或者 jenkins.io 官方文档，本篇只是记录搭建过程中需要注意到的坑
+注 ： 以下是对通过 PKG 安装器安">
+    
+
+    <!--Author-->
+    
+        <meta name="author" content="tofu">
+    
+
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="利用 Jenkins 实现 iOS 自动化构建踩坑记录"/>
+    
+
+    <!--Open Graph Description-->
+    
+
+    <!--Open Graph Site Name-->
+    <meta property="og:site_name" content="tofu&#39;s blog"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article" />
+    
+
+    <!--Page Cover-->
+    
+
+        <meta name="twitter:card" content="summary" />
+    
+
+    <!-- Title -->
+    
+    <title>利用 Jenkins 实现 iOS 自动化构建踩坑记录 - tofu&#39;s blog</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Search CSS -->
+    <link rel="stylesheet" href="/search/css/cb-search.css">
+    <!--
+        <link href="{{ "/search/css/cb-search.css" | prepend: site.baseurl }}" rel="stylesheet" type="text/css">
+    -->
+    
+    <!-- Custom Fonts -->
+    <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+
+    <!-- Rss -->
+    <link rel="alternate" type="application/rss+xml" href="//feed.xml" title="Tofu">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Analytics -->
+    
+
+
+    <!-- favicon -->
+    
+</head>
+
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Tofu's Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="/">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <h1>利用 Jenkins 实现 iOS 自动化构建踩坑记录</h1>
+                    
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        2016-12-04
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Tags and categories -->
+           
+                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
+                    
+                        
+
+
+<a href="/tags/iOS/">#iOS</a>
+
+
+                    
+                </div>
+                <div class="col-lg-4 col-md-5 post-categories">
+                    
+                </div>
+            
+
+            <!-- Gallery -->
+            
+
+            <!-- Post Main Content -->
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1 id="简单说两句"><a href="#简单说两句" class="headerlink" title="简单说两句"></a>简单说两句</h1><p>经过几年的发展，Jenkins 自动化构建系统被越来越多的团队推崇使用，在日常开发中可以节约出相当一部份精力，如何安装 Jenkins 这里就不过多的介绍了，可以参考其他的教程或者 <a href="https://jenkins.io/" target="_blank" rel="external">jenkins.io</a> 官方文档，本篇只是记录搭建过程中需要注意到的<code>坑</code></p>
+<p>注 ： 以下是对通过 PKG 安装器安装遇到的一些问题的记录，另本篇应该只适用于初次搭建 Jenkins 的开发者。</p>
+<h1 id="踩坑开始"><a href="#踩坑开始" class="headerlink" title="踩坑开始"></a>踩坑开始</h1><h2 id="配置-git-仓库地址时注意以下问题"><a href="#配置-git-仓库地址时注意以下问题" class="headerlink" title="配置 git 仓库地址时注意以下问题"></a>配置 git 仓库地址时注意以下问题</h2><p>仓库地址可以使用 <code>https</code> <code>ssh</code> 两种方式连接，如图下图所示，点击 Add 为 git 添加 clone 权限，此步骤解决如下问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Failed to connect to repository : Command &quot;git ls-remote -h </div><div class="line">https://git.oschina.net/xxx/xxx.git HEAD&quot; returned status code 128:</div><div class="line">stdout: </div><div class="line">stderr:fatal: Authentication failed for &quot;https://git.oschina.net/xxx/xxx.git/&quot;</div></pre></td></tr></table></figure>
+<p>点击 Add 按钮，选择连接方式<br><img src="http://ww4.sinaimg.cn/large/93b2b587jw1fag06hi0apj215i07cq3n.jpg" alt="配置 git 仓库权限"></p>
+<h4 id="HTTPs"><a href="#HTTPs" class="headerlink" title="HTTPs"></a>HTTPs</h4><p>https 方式连接需要配置账号、密码，如下图<br><img src="http://ww1.sinaimg.cn/large/93b2b587jw1fag0ibbvc2j21kw0krn0i.jpg" alt="设置 git 账号密码"></p>
+<ul>
+<li>Username <code>仓库登录账号</code></li>
+<li>Password <code>账号的密码</code></li>
+</ul>
+<h4 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h4><p>ssh 方式连接需要将 *.pub 中的公钥内容添加到 git 仓库服务器上<br>执行如下代码，测试连接，出现 <code>successfully</code> 字样说明连接成功，以 <code>github</code> 举例</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -T git@github.com</div></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/93b2b587jw1fag19tji5oj212u02ggm5.jpg" alt="ssh github"></p>
+<p>接下来配置访问私钥，如图<br><img src="http://ww4.sinaimg.cn/large/93b2b587jw1fag0sudz6ej21kw0l5jv0.jpg" alt="配置 SSH key"></p>
+<ul>
+<li>Username <strong>取个名字，例 <code>tofu&#39;s Mac</code></strong></li>
+<li>Private Key <code>配置私钥</code><ul>
+<li>Enter directly <code>可以将 ~/.ssh/id_rsa 中的私钥粘贴到这</code></li>
+<li>From a file on Jenkins master </li>
+<li>From the Jenkins master ~/.ssh <code>为了方便，我使用的这项，下面介绍</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="为-Jenkins-用户配置-ssh-key"><a href="#为-Jenkins-用户配置-ssh-key" class="headerlink" title="为 Jenkins 用户配置 ssh key"></a>为 Jenkins 用户配置 ssh key</h4><p>将私钥复制到 Jenkins 用户下，执行下面命令，需要输入用户登录密码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cp -R ~/.ssh /Users/Shared/Jenkins/.ssh</div></pre></td></tr></table></figure>
+<p>修改私钥权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo chmod -R 777 /Users/Shared/Jenkins/.ssh/id_rsa</div><div class="line">sudo chmod -R 777 /Users/Shared/Jenkins/.ssh/id_rsa.pub</div></pre></td></tr></table></figure>
+<p>777 权限虽然说很危险，但是只有 Jenkins 一个用户在用，也没什么</p>
+<h2 id="配置文件路径-（使用-Xcode-Plugnin）"><a href="#配置文件路径-（使用-Xcode-Plugnin）" class="headerlink" title="配置文件路径 （使用 Xcode Plugnin）"></a>配置文件路径 （使用 Xcode Plugnin）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">我的工程目录</div><div class="line">JenkinsTest</div><div class="line">	|__JenkinsTest</div><div class="line">			|__JenkinsTest.xcworkspace</div><div class="line">			|__JenkinsTest.project</div><div class="line">	|__README.md</div></pre></td></tr></table></figure>
+<p>使用 cocoapods 管理的项目需要指定 workspace 文件，配置路径时需要注意以下几点:</p>
+<ul>
+<li><code>${WORKSPACE}</code> 变量的完整路径是 <code>&#39;/Users/Shared/Jenkins/Home/workspace/Project&#39;</code> </li>
+<li>xcworkspace 文件不需要写扩展名</li>
+</ul>
+<p>所以配置 Xcode Workspace File 时要写成 <code>${WORKSPACE}/JenkinsTest/JenkinsTest</code></p>
+<h2 id="Cocoapods-项目打包时注意以下问题"><a href="#Cocoapods-项目打包时注意以下问题" class="headerlink" title="Cocoapods 项目打包时注意以下问题"></a>Cocoapods 项目打包时注意以下问题</h2><p>使用 cocoapods 管理的项目都知道，在上传到 git 上时， Pods/ 文件夹不会上传，所以在打包之前要执行 <code>pod install --verbose --no-repo-update</code>, <code>pod</code> 需要使用 rvm, ruby, 接下来配置环境变量</p>
+<h4 id="配置-rvm-环境变量"><a href="#配置-rvm-环境变量" class="headerlink" title="配置 rvm 环境变量"></a>配置 rvm 环境变量</h4><p>将 <code>.bashrc</code> <code>.bash_profile</code> 文件拷贝到 Jenkins 下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo cp ~/.bashrc /Users/Shared/Jenkins/.bashrc</div><div class="line">sudo cp ~/.bashrc /Users/Shared/Jenkins/.bash_profile</div></pre></td></tr></table></figure>
+<p>修改 <code>.bash_profile，.bashrc</code> 的 rvm 环境变量，将 <code>${HOME}</code> 变量改为 <code>/Users/[你的用户]</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo vim /Users/Shared/Jenkins/.bash_profile</div><div class="line">sudo vim /Users/Shared/Jenkins/.bash</div></pre></td></tr></table></figure>
+<p><img src="http://ww2.sinaimg.cn/large/93b2b587jw1fagb2ea8rgj212k04emxv.jpg" alt=".bash_profile"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.bashrc</div><div class="line"></div><div class="line">export PATH=&quot;$PATH:/Users/tofu/.rvm/bin&quot; # Add RVM to PATH for scripting</div></pre></td></tr></table></figure>
+<h4 id="配置-Execute-Shell"><a href="#配置-Execute-Shell" class="headerlink" title="配置 Execute Shell"></a>配置 Execute Shell</h4><p>构建之前需要更新 pod， 在 Execute Shell 中执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/bin/bash -l</span></div><div class="line"><span class="built_in">cd</span> JenkinsTest     <span class="comment"># 切换到 xcworkspace 文件夹</span></div><div class="line"><span class="built_in">source</span> ~/.bashrc   <span class="comment"># 加载 rvm 环境变量</span></div><div class="line">rvm use ruby-2.3.1 <span class="comment"># 引入 ruby</span></div><div class="line">pod install --verbose --no-repo-update</div></pre></td></tr></table></figure>
+<h4 id="出现编码错误"><a href="#出现编码错误" class="headerlink" title="出现编码错误"></a>出现编码错误</h4><p>当遇到 <code>WARNING: CocoaPods requires your terminal to be using UTF-8 encoding.</code> 错误时，需要在 <code>.bashrc</code> 中添加如下配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.bashrc</div><div class="line"></div><div class="line"><span class="built_in">export</span> LC_ALL=<span class="string">"en_US.UTF-8"</span></div></pre></td></tr></table></figure>
+<h4 id="出现-shell-session-update-command-not-found"><a href="#出现-shell-session-update-command-not-found" class="headerlink" title="出现 shell_session_update: command not found"></a>出现 <code>shell_session_update: command not found</code></h4><p>需要在 <code>~/</code> 下创建 <code>.direnvrc</code>，输入以下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Circumvent https://github.com/direnv/direnv/issues/210</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="function"><span class="title">shell_session_update</span></span>() &#123; :; &#125;</div><div class="line">``` </div><div class="line"></div><div class="line"><span class="comment">#### 签名问题</span></div><div class="line">打包时使用的是 xcode 中配置的证书，出现 `Xcode couldn<span class="string">'t find a provisioning profile matching` 时，需要将 `login.keychain ,login.keychian-db` 拷贝到 Jenkins 目录下</span></div><div class="line"></div><div class="line">```bash</div><div class="line">sudo cp -R ~/Library/Keychains/login.keychain /Users/Shared/Jenkins/Library/Keychains/login.keychain</div><div class="line">sudo cp -R ~/Library/Keychains/login.keychain-db /Users/Shared/Jenkins/Library/Keychains/login.keychain-db</div></pre></td></tr></table></figure>
+<h4 id="设置-Jenkins-Unlock-keychain"><a href="#设置-Jenkins-Unlock-keychain" class="headerlink" title="设置 Jenkins Unlock keychain"></a>设置 Jenkins Unlock keychain</h4><ul>
+<li>Jenkins -&gt; 系统管理 -&gt; 系统设置 -&gt; Xcode Builder 增加一个 keychain<br><img src="http://ww1.sinaimg.cn/large/93b2b587jw1fagb4p2zq8j21kw0fuq5b.jpg" alt="增加 keychain"></li>
+<li>项目设置中, 打开 <code>Code signing &amp; OS X keychain options</code> 勾选 <code>Unlock keychain</code> ，下拉框选择 <code>JenkinsTest</code><br><img src="http://ww3.sinaimg.cn/large/93b2b587jw1fagb9l0hf1j21eg05et9j.jpg" alt="勾选 unlock keychain"></li>
+</ul>
+<h2 id="找不到-Scheme-问题"><a href="#找不到-Scheme-问题" class="headerlink" title="找不到 Scheme 问题"></a>找不到 Scheme 问题</h2><p>当遇到 <code>xcodebuild: error: The workspace named &quot;xxxx&quot; does not contain a scheme named &quot; xxxx&quot;.</code> 时，打开 <code>Xcode -&gt; Manage Schemes</code> 按如下图操作<br><img src="http://ww3.sinaimg.cn/large/93b2b587jw1fagbmeio6yj213w08k405.jpg" alt="create scheme"></p>
+<ul>
+<li>不要选择 Pods 的 Scheme</li>
+<li><code>Container</code> 选择 <code>JenkinsTest Workspace</code> </li>
+<li>勾选 <code>Shared</code></li>
+</ul>
+<p>操作完成之后，进入文件夹，右键 <code>JenkinsTest.xcworkspace</code> 显示包内容就会看到 <code>xcscheme</code> 文件了，将这个文件上传到 git 仓库<br><img src="http://ww1.sinaimg.cn/large/93b2b587jw1fagbqc4l6aj20ys03mt9h.jpg" alt=""></p>
+<h2 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h2><p>当看到 <code>Finished: SUCCESS</code> 时，就说明构建成功了，打包好的 ipa 就躺在配置的 ipa 输出路径 <code>Output directory</code> 中<br><img src="http://ww3.sinaimg.cn/large/93b2b587jw1fagbtsvnthj21fs04875x.jpg" alt="finished"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>优化秀工具可以提高很多效率，花费精力去学习还是值得的，本文只是记录了一些有 <code>坑</code> 的地方，希望能帮助到一些人。</p>
+<p>其实很早就搭建好了，一直没做记录，有些东西资料差点都找不到了，以后要保持写博客的习惯，接下来的文章会记录更多的 Jenkins 在 iOS 上的应用。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://liumh.com/2015/11/25/ios-auto-archive-ipa/" target="_blank" rel="external">iOS自动打包并发布脚本</a></li>
+<li><a href="https://mmorejon.github.io/en/blog/continuous-integration-jenkins-ios9-xcode/" target="_blank" rel="external">Continuous integration mixing Jenkins, iOS 9 and XCode 7</a></li>
+<li><a href="https://orangejuiceliberationfront.com/setting-up-jenkins-for-github-and-xcode-with-nightlies/" target="_blank" rel="external">Setting up Jenkins for Github and Xcode</a></li>
+<li><a href="https://xamoom.com/2016/04/setup-a-local-jenkins-for-your-ios-project/" target="_blank" rel="external">Setup a local Jenkins for your iOS project</a></li>
+<li><a href="http://www.cnblogs.com/qingjoin/p/3929493.html" target="_blank" rel="external">Jenkins Xcode 证书设置错误 Code Sign error: No matching codesigning identity found: No codesigning identities
+</a></li>
+<li><a href="http://stackoverflow.com/questions/13650513/not-possible-to-set-the-jenkins-xcode-plugin-to-use-a-specified-keychain" target="_blank" rel="external">Not possible to set the Jenkins’ XCode plugin to use a specified keychain?</a></li>
+<li><a href="https://mattconnolly.wordpress.com/2012/01/29/using-rvm-with-jenkins/" target="_blank" rel="external">Using RVM with Jenkins</a></li>
+<li><a href="http://linjunpop.logdown.com/posts/162202-set-up-jenkins-server-on-the-mac-mini-to-run-ios-tests" target="_blank" rel="external">在 Mac mini 上架设 Jenkins 服务器来运行 iOS 测试</a></li>
+<li><a href="http://www.kancloud.cn/kancloud/learnxinyminutes/58925" target="_blank" rel="external">Y分钟学习X种语言</a></li>
+</ul>
+
+
+                
+            </div>
+
+            <!-- Comments -->
+            
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
+
+
+                </div>
+            
+        </div>
+    </div>
+</article>
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+
+                    
+                    
+                        <li>
+                            <a href="feed.xml" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+                    
+                        <li>
+                            <a href="https://github.com/devtofu" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+                    
+                        <li>
+                            <a href="http://weibo.com/tofumate" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+                    
+
+                    
+
+                    
+                </ul>
+                <p class="copyright text-muted">Copyright &copy; 2016 tofu<br>
+                    Write by <a href="http://weibo.com/tofumate" target="_blank">Tofu</a> | 体会生活的乐趣
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="cb-search-tool" style="position: fixed; top: 0px ; bottom: 0px; left: 0px; right:  0px;
+        opacity: 0.95; background-color: #111111; z-index: 9999; display: none;">
+
+    <input type="text" class="cb-search-content" id="cb-search-content" style="position: fixed; top: 60px" placeholder="文章标题 日期 标签" />
+
+    <div style="position: fixed; top: 16px; right: 16px;">
+        <img src="/search/img/cb-close.png"  id="cb-close-btn"/>
+    </div>
+    </div>
+
+    <div style="position: fixed; right: 16px; bottom: 20px;">
+        <img src="/search/img/cb-search.png"  id="cb-search-btn"  title="双击ctrl试一下"/>
+    </div>
+    
+    
+</footer>
+
+    <!-- After footer scripts -->
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.2.2.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- Gallery -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Search -->
+<script src="/search/js/bootstrap3-typeahead.min.js"></script>
+<script src="/search/js/cb-search.js"></script>
+
+<!-- Disqus Comments -->
+
+
+
+</body>
+
+</html>
