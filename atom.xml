@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.tofu.wiki/"/>
-  <updated>2016-12-06T15:47:35.000Z</updated>
+  <updated>2016-12-06T16:21:49.000Z</updated>
   <id>http://www.tofu.wiki/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.tofu.wiki/2016/12/04/Jenkins-Series-of-tutorials-Part-1/"/>
     <id>http://www.tofu.wiki/2016/12/04/Jenkins-Series-of-tutorials-Part-1/</id>
     <published>2016-12-04T12:28:58.000Z</published>
-    <updated>2016-12-06T15:47:35.000Z</updated>
+    <updated>2016-12-06T16:21:49.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简单说两句"><a href="#简单说两句" class="headerlink" title="简单说两句"></a>简单说两句</h2><p>经过几年的发展，Jenkins 自动化构建系统被越来越多的团队推崇使用，在日常开发中可以节约出相当一部份精力，如何安装 Jenkins 这里就不过多的介绍了，可以参考其他的教程或者 <a href="https://jenkins.io/" target="_blank" rel="external">jenkins.io</a> 官方文档，本篇只是记录搭建过程中需要注意到的<code>坑</code></p>
 <p>注 ： 以下是对通过 PKG 安装器安装遇到的一些问题的记录，另本篇应该只适用于初次搭建 Jenkins 的开发者。</p>
@@ -74,7 +74,7 @@
 <li>Jenkins -&gt; 系统管理 -&gt; 系统设置 -&gt; Xcode Builder 增加一个 keychain<br><img src="http://ww1.sinaimg.cn/large/93b2b587jw1fagb4p2zq8j21kw0fuq5b.jpg" alt="增加 keychain"></li>
 <li>项目设置中, 打开 <code>Code signing &amp; OS X keychain options</code> 勾选 <code>Unlock keychain</code> ，下拉框选择 <code>JenkinsTest</code><br><img src="http://ww3.sinaimg.cn/large/93b2b587jw1fagb9l0hf1j21eg05et9j.jpg" alt="勾选 unlock keychain"></li>
 </ul>
-<h2 id="找不到-Scheme-问题"><a href="#找不到-Scheme-问题" class="headerlink" title="找不到 Scheme 问题"></a>找不到 Scheme 问题</h2><p>当遇到 <code>xcodebuild: error: The workspace named &quot;xxxx&quot; does not contain a scheme named &quot; xxxx&quot;.</code> 时，打开 <code>Xcode -&gt; Manage Schemes</code> 按如下图操作<br><img src="http://ww3.sinaimg.cn/large/93b2b587jw1fagbmeio6yj213w08k405.jpg" alt="create scheme"></p>
+<h3 id="找不到-Scheme-问题"><a href="#找不到-Scheme-问题" class="headerlink" title="找不到 Scheme 问题"></a>找不到 Scheme 问题</h3><p>当遇到 <code>xcodebuild: error: The workspace named &quot;xxxx&quot; does not contain a scheme named &quot; xxxx&quot;.</code> 时，打开 <code>Xcode -&gt; Manage Schemes</code> 按如下图操作<br><img src="http://ww3.sinaimg.cn/large/93b2b587jw1fagbmeio6yj213w08k405.jpg" alt="create scheme"></p>
 <ul>
 <li>不要选择 Pods 的 Scheme</li>
 <li><code>Container</code> 选择 <code>JenkinsTest Workspace</code> </li>
