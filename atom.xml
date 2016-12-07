@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.tofu.wiki/"/>
-  <updated>2016-12-07T08:08:42.000Z</updated>
+  <updated>2016-12-07T09:24:48.000Z</updated>
   <id>http://www.tofu.wiki/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.tofu.wiki/2016/12/04/Jenkins-Series-of-tutorials-Part-1/"/>
     <id>http://www.tofu.wiki/2016/12/04/Jenkins-Series-of-tutorials-Part-1/</id>
     <published>2016-12-04T12:28:58.000Z</published>
-    <updated>2016-12-07T08:08:42.000Z</updated>
+    <updated>2016-12-07T09:24:48.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简单说两句"><a href="#简单说两句" class="headerlink" title="简单说两句"></a>简单说两句</h2><p>经过几年的发展，Jenkins 自动化构建系统被越来越多的团队推崇使用，在日常开发中可以节约出相当一部份精力，如何安装 Jenkins 这里就不过多的介绍了，可以参考其他的教程或者 <a href="https://jenkins.io/" target="_blank" rel="external">jenkins.io</a> 官方文档，本篇只是记录搭建过程中需要注意到的<code>坑</code></p>
 <p>注 ： 以下是对通过 PKG 安装器安装遇到的一些问题的记录，另本篇应该只适用于初次搭建 Jenkins 的开发者。</p>
