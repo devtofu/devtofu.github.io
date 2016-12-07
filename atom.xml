@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.tofu.wiki/"/>
-  <updated>2016-12-06T16:21:49.000Z</updated>
+  <updated>2016-12-07T08:08:42.000Z</updated>
   <id>http://www.tofu.wiki/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.tofu.wiki/2016/12/04/Jenkins-Series-of-tutorials-Part-1/"/>
     <id>http://www.tofu.wiki/2016/12/04/Jenkins-Series-of-tutorials-Part-1/</id>
     <published>2016-12-04T12:28:58.000Z</published>
-    <updated>2016-12-06T16:21:49.000Z</updated>
+    <updated>2016-12-07T08:08:42.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="简单说两句"><a href="#简单说两句" class="headerlink" title="简单说两句"></a>简单说两句</h2><p>经过几年的发展，Jenkins 自动化构建系统被越来越多的团队推崇使用，在日常开发中可以节约出相当一部份精力，如何安装 Jenkins 这里就不过多的介绍了，可以参考其他的教程或者 <a href="https://jenkins.io/" target="_blank" rel="external">jenkins.io</a> 官方文档，本篇只是记录搭建过程中需要注意到的<code>坑</code></p>
 <p>注 ： 以下是对通过 PKG 安装器安装遇到的一些问题的记录，另本篇应该只适用于初次搭建 Jenkins 的开发者。</p>
@@ -83,7 +83,7 @@
 <p>操作完成之后，进入文件夹，右键 <code>JenkinsTest.xcworkspace</code> 显示包内容就会看到 <code>xcscheme</code> 文件了，将这个文件上传到 git 仓库<br><img src="http://ww1.sinaimg.cn/large/93b2b587jw1fagbqc4l6aj20ys03mt9h.jpg" alt=""></p>
 <h2 id="最终结果"><a href="#最终结果" class="headerlink" title="最终结果"></a>最终结果</h2><p>当看到 <code>Finished: SUCCESS</code> 时，就说明构建成功了，打包好的 ipa 就躺在配置的 ipa 输出路径 <code>Output directory</code> 中<br><img src="http://ww3.sinaimg.cn/large/93b2b587jw1fagbtsvnthj21fs04875x.jpg" alt="finished"></p>
 <p>到这里 iOS 利用 Jenkins 自动化构建就好，更多自动化的内容如自动上传 ipa 到 fir 教程也很多，也比较简单。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>优化秀工具可以提高很多效率，花费精力去学习还是值得的，本文只是记录了一些有 <code>坑</code> 的地方，希望能帮助到一些人。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>优秀的工具可以提高很多效率，花费精力去学习还是值得的，本文只是记录了一些有 <code>坑</code> 的地方，希望能帮助到一些人。</p>
 <p>其实很早就搭建好了，一直没做记录，有些东西资料差点都找不到了，以后要保持写博客的习惯，接下来的文章会记录更多的 Jenkins 在 iOS 上的应用。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="http://liumh.com/2015/11/25/ios-auto-archive-ipa/" target="_blank" rel="external">iOS自动打包并发布脚本</a></li>
